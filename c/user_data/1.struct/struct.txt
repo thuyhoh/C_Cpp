@@ -1,0 +1,124 @@
+// struct(structure): la kieu du lieu tu dinh nghia cua nguoi dung dua tren cac kieu du lieu co san
+/*
+    struct struct_name{
+        elem....;
+    };
+*/
+
+/*  sử dụng struct: khởi tạo giá trị biến cho struct:
+    struct struct_name var_name;
+    Ex: struct ex1 var1;
+    Ex: struct ex1 *ptr;
+*/
+
+/*  truy cập vào từng thành phần trong struct
+ *  khi struct là biến dữ liệu: muốn truy cập vào tùng thành phần của struct dùng toán tử '.':
+    Ex: var1.x = 1; var1.y = 6; ...
+ *  khi struct là con trỏ(pointer): muốn truy cập vào tùng thành phần của struct dùng toán tử '->'
+    Ex: ptr->x = 1; ptr->y = 100;...
+*/
+
+struct ex1{
+    short   x;
+    int     y;
+    double  z;
+};
+
+
+// độ rộng của struct dước tính là sizeof(kiểu dữ liệu lớn nhất có trong struct)
+// dung lượng struct được tính là tổng dung lượng các thành phần + phần nhớ đệm
+// do máy tính lưu dữ liêu của các biến trên các địa trỉ tự nhiên do vậy tạo ra các khoảng đệm giữa các vị trí
+// Ex: int   (4 byte): được đặt ở các địa trỉ có giá trị cuối: 0, 4, 8, C
+//     char  (1 byte): được đặt ở các địa trỉ bất kì
+//     short (2 byte): được đặt ở các địa trỉ có giá trị cuối: 0, 2, 4, 6, 8, A, C, E
+//     float (8 byte): được đặt ở các địa trỉ có giá trị cuối: 0, 8     
+
+// ex có độ rộng là: sizeof(long long) = 8byte
+// dung lượng ex = 16 byte
+/*
+byte      0   1   2   3   4   5   6   7
+        | x | x |   |   | x | x | x | x |
+        | z | z | z | z | z | z | z | z |
+*/ 
+
+
+// căn chỉnh bộ nhớ
+// sử dụng __attribute__((packed)): dùng dể căn chỉnh bộ nhớ
+/* cách sử dụng __attribute__((packed)):
+    struct ex1{
+        short      x;
+        int        y;
+        long long  z;
+    }__attribute__((packed));
+
+*/
+
+// việc sử dụng thuộc tính này giúp tối ưu bộ nhớ không tạo ra bộ đêm 
+
+/* so sánh:
+ * không sử dụng __attribute__((packed)): 
+    - việc này sẽ không tăng thêm code khi sảy ra quá trình biên dịch
+    - không làm tăng thời gian run chương trình 
+    - không tối ưu bộ nhớ
+ * sử dụng __attribute__((packed)):
+    - việc này sẽ làm tăng thêm code khi sảy ra quá trình biên dịch do trình biên dịch phải gán các biến vào các vị trí không phải tự nhiên
+    - làm tăng thời gian run chương trình
+    - tối ưu được bộ nhớ
+*/ 
+
+// dùng typerdef: định danh kiêu dữ liệu cho cấu trúc 
+/*  sử dụng typerdef
+ 
+ *  Cách 1:
+    typerdef struct struct_name{
+        elem...;
+    }user_data_name; 
+
+ *  Cách 2:
+    struct struct_name{
+        elem...;
+    };
+    typedef struct struct_name  user_data_name;
+
+*/
+// khi này user_data_name sẽ thay thế cho struct struct_name
+
+
+// nested structure(struct into struct): trong c cho phép struct nằm trong struct khác
+/* Ex
+    struct EX2{
+        int     a; 
+        float   b;
+        
+        struct{
+            uint8_t     x;
+            unit32_t    y;
+        }c;
+        char    d;
+    };
+
+    khi này trong struct Ex2 có 3 biến có kiểu dữ liệu nguyên thủy 1 biến có kiểu dữ liệu do người dùng tự định nghĩa
+*/ 
+
+
+// bit-fields: để tối ưu hóa dung lượng sử dụng của struct
+/* Ex: tạo ra  một struct (elem:a,b,c,d): a cần 3 bit; b cần 4 bit; c cần 10 bit; d cần 7 bit 
+ *  cách thông thường    
+    struct Ex3{
+        uint8_t     a;
+        uint8_t     b;
+        uint16_t    c;
+        uint8_t     d;
+    };
+    khi này sizeof(struct) =  5 byte
+
+ *  sử dụng bit-fields:
+    struct Ex3{
+        uint32_t    a:3;
+        uint32_t    b:4;
+        uint32_t    c:10;
+        uint32_t    d:7;
+    };
+    khi này sizeof(struct) = 4 byte
+
+*/

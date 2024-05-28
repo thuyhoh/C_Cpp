@@ -1,0 +1,50 @@
+// trong c chỉ thị tiền xử lí(pre-proecessor directives) ddiowcj sử dụng để tối ưu thời gian biên dịch
+// chỉ thị tiền sử lí cũng được sử dụng như là một phần văn bản thay thế cho một số hay là thứ khác
+// được bắt đầu là '#'
+// chỉ thị tiền xử lí giải quyết một vấn đề nào đó trong xuốt quá trình biên dịch 
+
+/*  Macros: #define <identifier> <value> 
+  // used for textual replancement
+    file inclusion: #include <std lib file name> / #include "user defined file name "
+  // used for include file
+    conditional compilation: #if / #else / #endif / #ifdef / #else / #indef / #undef
+  // used to direct the compiler about code compilation
+    other: #error / #pragma
+*/
+
+// Macro:
+// Macro_value
+#define PI 3.1415f // f: float
+// Macro_function(oneline function)
+#define AREA_OF_CIRCLE1(r) PI*r*r      //
+#define AREA_OF_CIRCLE2(r) (PI)*(r)*(r)
+
+// condition compilation in 'C': chỉ dẫn trình biên dịch thêm vào hoặc loại trừ những khối lệnh riêng biệt vào chương trình bằng những điều kiện khác nhau
+
+/* #if and #endif
+
+#if <constant expression>
+    // code block
+#endif // else cũng dùng để kết thúc các chỉ thị còn lại 
+// nếu constant expression = 0 -> code block ben trong #if #endif ko dc thuc thi 
+// nếu constant expression != 0 -> code block ben trong #if #endif dc thuc thi
+
+#if <constant expression>
+// code clock
+#else
+// code block
+#endif
+// khi constant expressrion = 0 ->else thực hiện 
+
+#ifdef <constant expression>
+// khi <constant expression> được define -> code block được thực hiện 
+
+#ifndef <constant expression>
+// khi <constant expression> chưa được khai báo thì code block được thực hiện 
+
+undef <constant expression>
+// xóa identifine <constant expression> khi nó đã được define
+
+*/
+#define MACRO 100
+#undef MACRO   // xóa MACRO

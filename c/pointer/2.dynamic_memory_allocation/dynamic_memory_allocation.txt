@@ -1,0 +1,6 @@
+sử dụng thư viện stdlib.h
+
+cấp phát tĩnh bộ nhớ:
+cấp phát động bộ nhớ:
+
+giải phóng bộ nhớ: free(void *ptr);

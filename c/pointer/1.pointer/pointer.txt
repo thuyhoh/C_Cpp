@@ -1,0 +1,36 @@
+pointer: -  là thành phân quan trọng trong embedded, 
+         -  pointer là một biến đặc biệt lưu trữ giá trị địa trỉ của một biến hoặc một vùng bộ nhớ
+         -  kích thước con trỏ là như nhau và chỉ phụ thuộc vào kiến trúc của hệ thống
+         
+syntax declaration      : <datatype> * ptr;  // int *ptr; int a = 9;
+       initialization   : ptr = &<ten_bien>; // ptr = & a;
+       dereferencing    : *ptr               // int b = *ptr; <-> b = a = 9
+
+use pointer: - trao đổi dữ liệu giữa các hàm (truyền tham chiếu) // hàm swap()
+             - truy nhập vào các thành phần của mảng
+             - return nhiều giá trị từ hàm
+             - cấp phát động bộ nhớ
+             - triển khai các cấu trúc dữ liệu
+
+Void pointer: void *ptr;
+    - là một con trỏ đặc biệt nó ko có kiểu, nó có thể nhận được bắt cứ địa trỉ nào
+    - không thể thực hiện dereferencing pointer, để sử dụng dereferencing pointer của void pointer ta phải ep kiểu cho chúng
+    - đối với chuẩn C không thể thực hiện bất cứ phép toán nào/ đối với GNU C các phép toán tăng giảm với kích thước là 1 byte
+NULL pointer:
+    - khi con trỏ 
+
+Wild pointer
+
+Dangling pointer
+
+double pointer(pointer pointing to pointer): <datatype> ** ptr;
+
+function pointer
+
+C Pointer Arithmetic(phép toán trên con trỏ):
+    phép tăng giảm con trỏ:
+        ptr = ptr +(-) a; -> địa chỉ tăng/giảm a*sizeof(*ptr);
+        ptr++ = ptr + 1;
+        ptr-- = ptr - 1;
+    phép so sánh 2 con trỏ cùng kiểu:
+        ptr1 >(< , =) ptr2 khi địa trỉ chứa trogn ptr1 >(< , =) ptr2

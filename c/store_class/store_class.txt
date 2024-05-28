@@ -1,0 +1,6 @@
+pham vi hoat dong cua bien
+thoi gian song
+muc do u tien
+noi luu tru 
+
+static var: 

@@ -1,0 +1,6 @@
+quá trình build một embedded project 
+*.c *.cpp *.h --(preprocessor) *.i *.ii --(compiling)--> *.s --(assembiler)--> *.o *.obj --(linked)--> *.elf -> *.exe
+
+preprocessor : chèn hết các hàm được gọi vào trong hàm main
+compiling : chuyển các file thành mã assembe 
+linked : link hết các file trong project thành các file 

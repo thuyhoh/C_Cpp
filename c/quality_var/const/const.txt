@@ -1,0 +1,28 @@
+// const is a type qualifier in C used to enford read-only feature on variables
+// const là một từ khóa được sử dụng để chỉ định đối tượng không thể thay đối một số đặc điểm của nó
+
+
+
+/* const_var:  <data_type> const <data_name>; 
+    Ex: uint8_t const Data = 10;
+    - const được sử dụng chỉ định nội dung bên trong đối tượng đó không thể thay đổi khi biên dịch. Nếu tự ý thay đổi -> errol
+    - vẫn có thể thay đổi nội dung bên trong đối tượng(local) nếu truy cập vào địa chỉ của nó(sử dụng con trỏ(pointer))
+    - local_const_var được lưu trữ ở RAM, global_const_var được lưu trữ ở ROM/FLASH
+*/
+/* const_pointer:
+ * modifiable pointer and constant data(con trỏ trỏ tới hằng): 
+            <data_type> const* <pointer_name>;
+    Ex: uint8_t const* ptr = &Data;
+    - khi này con trỏ(ptr) có thể thay đổi nhưng giá trị bên trong con trỏ(*ptr) là hằng
+
+ * modifiable data and const pointer: read-only pointer pointing to modifiable data
+            <data_type> *const <pointer_name>
+    Ex: uint8_t *const ptr = &data
+    - khi này ptr là hằng(không thể thay đổi ptr) nhưng giá trị bên trong hằng có thể thay đổi
+        
+ * const data and const pointer
+            <data_type>const *const <pointer_name>
+    Ex: uint8_t const *const ptr = &data;
+    - khi này cả ptr và data đều là read-only
+ * 
+*/
