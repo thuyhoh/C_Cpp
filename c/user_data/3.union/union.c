@@ -23,7 +23,7 @@ int main(void){
     union Ex ex1;
     
     // lỗi có thể sảy ra khi truy xuất
-    ex1.a  = 0xAB;
+    ex1.a  = 0xB;
     ex1.b  = 0xEECC;
      
     printf("ex1.a = %#X\n",ex1.a); // CC
